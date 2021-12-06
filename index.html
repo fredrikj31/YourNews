@@ -7,9 +7,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>YourNews - Home</title>
 
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- The page supports both dark and light color schemes,
+         and the page author prefers / default is light. -->
+	<meta name="color-scheme" content="light dark">
+
+	<!-- Replace the Bootstrap CSS with the
+         Bootstrap-Dark Variant CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/css/bootstrap-dark.min.css" rel="stylesheet">
+
+
+	<!-- Optional Meta Theme Color is also supported on Safari and Chrome -->
+	<meta name="theme-color" content="#111111" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#eeeeee" media="(prefers-color-scheme: dark)">
 
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/614436aae0.js" crossorigin="anonymous"></script>
@@ -21,31 +30,34 @@
 <body>
 
 	<!-- Grey with black text -->
-	<nav class="navbar navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
 
 		<div class="container-fluid">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="fas fa-bars align-items-center text-black"></i></a>
+					<a class="nav-link" data-bs-toggle="offcanvas" href="#newsSidebar" role="button"
+						aria-controls="newsSidebar"><i class="fs-5 fas fa-bars align-items-center text-white"></i></a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link fs-5 fw-bold" href="#">Your News</a>
+					<a class="nav-link fs-5 fw-bold text-white" href="#">Your News</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fas fa-ellipsis-v align-items-center text-black"></i></a>
+					<a class="nav-link" data-bs-toggle="offcanvas" href="#settingsSidebar" role="button"
+						aria-controls="settingsSidebar"><i
+							class="fs-5 fas fa-ellipsis-v align-items-center text-white"></i></a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<!-- Sidebar -->
-	<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	<!-- News Sidebar -->
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="newsSidebar" aria-labelledby="newsSidebarLabel">
 		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+			<h5 class="offcanvas-title" id="newsSidebarLabel">Offcanvas</h5>
 			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
@@ -67,10 +79,41 @@
 		</div>
 	</div>
 
+	<!-- Settings Sidebar -->
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="settingsSidebar" aria-labelledby="settingsSidebarLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="settingsSidebarLabel">Offcanvas</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div>
+				Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
+				lists, etc.
+			</div>
+			<div>
+				<input class="form-check-input" type="checkbox" id="darkMode">
+			</div>
+			<div class="dropdown mt-3">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+					data-bs-toggle="dropdown">
+					Dropdown button
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<li><a class="dropdown-item" href="#">Action</a></li>
+					<li><a class="dropdown-item" href="#">Another action</a></li>
+					<li><a class="dropdown-item" href="#">Something else here</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+
+	<!-- Dark Mode -->
+	<script src="./assets/js/darkmode.js"></script>
 </body>
 
 </html>
