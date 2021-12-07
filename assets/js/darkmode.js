@@ -1,61 +1,39 @@
-let darkModeOn = false;
+setTheme(checkSetting());
 
-const createStorage = (name, value) => {
-	localStorage.setItem(name, value);
-};
+function deleteSettings() {
+	console.log("Deleted Data");
+	localStorage.removeItem("isDarkMode");
+	setTheme("false");
+}
 
-const readStorage = (name) => {
-	return localStorage.getItem(name);
-};
+function checkSetting() {
+	const isDarkMode = localStorage.getItem("isDarkMode");
 
-const deleteStorage = (name) => {
-	localStorage.removeItem(name);
-};
-
-const toggleDarkMode = (e) => {
-	if (document.body.classList.contains("dark-mode")) {
-		document.body.classList.remove("dark-mode");
-		darkModeOn = false;
-		createStorage("my_preferredMode", "light-mode");
+	if (isDarkMode == null) {
+		localStorage.setItem("isDarkMode", "false");
+		return "false";
 	} else {
-		document.body.classList.add("dark-mode");
-		darkModeOn = true;
-		createStorage("my_preferredMode", "dark-mode");
+		return isDarkMode;
 	}
-};
+}
 
-document.getElementById("darkMode").addEventListener("click", toggleDarkMode);
-
-document.addEventListener("DOMContentLoaded", () => {
-	if (readStorage("my_preferredMode")) {
-		if (readStorage("my_preferredMode") == "dark-mode") {
-			darkModeOn = true;
-		} else {
-			darkModeOn = false;
-		}
+function setTheme(isDarkMode) {
+	console.log(isDarkMode);
+	if (isDarkMode == "true") {
+		darkmode.setDarkMode(true);
 	} else {
-		if (
-			window.matchMedia &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches
-		) {
-			darkModeOn = true;
-		} else {
-			if (document.body.classList.contains("dark-mode")) {
-				darkModeOn = true;
-			} else {
-				darkModeOn = false;
-			}
-		}
+		darkmode.setDarkMode(false);
 	}
+}
 
-	if (darkModeOn) {
-		if (!document.body.classList.contains("dark-mode")) {
-			document.body.classList.add("dark-mode");
-		}
-		document.getElementById("darkMode").checked = true;
+function toggleDarkMode() {
+	const result = checkSetting();
+
+	if (result == "true") {
+		localStorage.setItem("isDarkMode", "false");
+		setTheme("false");
 	} else {
-		if (document.body.classList.contains("dark-mode")) {
-			document.body.classList.remove("dark-mode");
-		}
+		localStorage.setItem("isDarkMode", "true");
+		setTheme("true");
 	}
-});
+}
